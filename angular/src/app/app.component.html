@@ -1,0 +1,73 @@
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="over" [opened]="sidenav">
+    <div class="">
+      <div class="">
+        <div class="">
+          <h3>Your id:</h3>
+          <button mat-button matTooltip="Copy id" (click)="copyClipboard()">
+            {{ userId }}
+            <i class="fa fa-clipboard" aria-hidden="true"></i>
+          </button>
+          <p>Connect to:</p>
+          <textarea
+            type="text"
+            class="form-control"
+            [(ngModel)]="connectId"
+            id="text"
+            #text
+          ></textarea>
+          <button mat-button (click)="onConnect()">Connect</button>
+          <button mat-button (click)="pasteClipboard(text)" id="paste">
+            Paste Id
+          </button>
+          <p>Status: {{ status }}</p>
+          <mat-spinner *ngIf="isLoading"></mat-spinner>
+        </div>
+      </div>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <a (click)="sidenav = !sidenav"
+      ><i class="fa fa-bars fa-3x" aria-hidden="true"></i
+    ></a>
+    <div id="messages" class="container">
+      <div *ngFor="let msg of msgs">
+        <div class="row" *ngIf="msg.id === 0">
+          <div class="mine pull-right">
+            {{ msg.value }}
+          </div>
+        </div>
+        <div class="row" *ngIf="msg.id === 1">
+          <div class="other">
+            {{ msg.value }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container footer">
+      <div class="row">
+        <form>
+          <div class="col-xs-11">
+            <input
+              id="m"
+              autocomplete="off"
+              class="form-control"
+              name="message"
+              [(ngModel)]="formValue"
+              ngModel
+            />
+          </div>
+          <button
+            mat-button
+            href="#bottom"
+            id="button"
+            class="btn btn-default"
+            (click)="onSubmit()"
+          >
+            Send
+          </button>
+        </form>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

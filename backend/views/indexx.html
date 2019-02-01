@@ -10,28 +10,17 @@
   </head>
   <body>
     <div id="messages" class="container">
-      <div class="row">
-        <div class="mine pull-right">
-          Hello world!Hello world!Hello world!Hello world!
-        </div>
-      </div>
-      <div class="row">
-        <div class="other">
-          Hello world!Hello world!Hello world!Hello world!
-        </div>
-      </div>
+      <h3>Your session id: <span id="id"></span></h3>
     </div>
     <div id="bottom"></div>
     <div class="container footer">
-      <div class="row ">
-        <div class="">
+      <div class="row">
           <form action="">
             <div class="col-xs-11">
               <input id="m" autocomplete="off" class="form-control"/>
             </div>
             <button href="#bottom" id="button" class="btn btn-default">Send</button>
           </form>
-        </div>
       </div>
     </div>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
@@ -53,16 +42,14 @@
 
           return false;
         });
+        socket.on('connect', function() {
+          $("#id").text(socket.id);
+        });
         socket.on("chat message", function(msg) {
           $("#messages").append($('<div class="row">')
             .append('<div class="other">' +  msg + '</div>'));
           $("html, body").animate({ scrollTop: $(document).height() }, "slow");
-
         });
-        // $("#button").click(function() {
-        //   console.log('jdlkj');
-        //   $("html, body").animate({ scrollTop: $(document).height() }, "slow");
-        // });​
       });
     </script>
   </body>
