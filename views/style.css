@@ -6,37 +6,31 @@
 body {
   font: 13px Helvetica, Arial;
 }
-form {
-  background: #000;
-  padding: 3px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+div {
+  margin: 5px 0;
 }
-form input {
-  border: 0;
-  padding: 10px;
-  width: 90%;
-  margin-right: 0.5%;
-}
-form button {
-  width: 9%;
-  background: rgb(130, 224, 255);
-  border: none;
-  padding: 10px;
+
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   color: #000000;
+   text-align: center;
+   padding: 5px 20px;
+   background: #000000;
 }
 #messages {
   display: block;
-  margin: 50px 100px;
+  margin: 80px 100px;
   padding: 0;
-  font-size: 25px;
-  border-left: 1px solid #000;
+  font-size: 18px;
 }
 
 .mine {
-  float: right;
+  display: inline-block;
+  word-wrap: break-word;
   max-width: 35%;
-  transform: translateX(-50px);
 	position: relative;
 	background: #00aabb;
 	border-radius: .4em;
@@ -59,9 +53,9 @@ form button {
 }
 
 .other {
-  float: left;
+  display: inline-block;
+  word-wrap: break-word;
   max-width: 35%;
-  transform: translateX(50px);
 	position: relative;
 	background: #ff7bf8;
   border-radius: .4em;
@@ -81,9 +75,4 @@ form button {
 	border-top: 0;
 	margin-top: -16.5px;
 	margin-left: -15px;
-}
-
-.dis-block {
-  margin: 30px 0;
-  display: block;
 }

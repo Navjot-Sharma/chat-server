@@ -4,7 +4,7 @@ const path = require('path');
 const router = express();
 
 router.get("", (req, res) => {
-  res.status(200).sendFile(path.resolve('./views/default.html'));
+  res.status(200).sendFile(path.resolve('./views/index.html'));
 });
 
 module.exports = router;
