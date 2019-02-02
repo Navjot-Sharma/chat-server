@@ -18,7 +18,7 @@ app.use((req, res, next) => {
 });
 
 
-// app.use('/', express.static(path.join(__dirname, 'private-chat')));
+app.use('/', express.static(path.join(__dirname, 'angular')));
 
 const clients = [];
 
@@ -36,9 +36,13 @@ io.on('connection', (socket) => {
 
 app.get('/:id', (req, res, next) => {
   const index = clients.findIndex( id => id === req.params.id);
-  if (index === -1) return res.status(200).json({status: 'Not connected'}); 
+  if (index === -1) return res.status(200).json({status: 'Not connected'});
 
   res.status(200).json({status: 'Connected'});
+});
+
+app.use((req, res, next) => {
+  res.sendFile(path.join(__dirname, 'angular', 'index.html'));
 });
 
 const port = process.env.port || 3000;
