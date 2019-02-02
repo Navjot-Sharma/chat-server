@@ -1,5 +1,5 @@
 <mat-drawer-container class="example-container">
-  <mat-drawer mode="over" [opened]="sidenav">
+  <mat-drawer mode="over" [(opened)]="sidenav">
     <div class="">
       <div class="">
         <div class="">
@@ -12,24 +12,26 @@
           <textarea
             type="text"
             class="form-control"
-            [(ngModel)]="connectId"
             id="text"
             #text
           ></textarea>
           <button mat-button (click)="onConnect()">Connect</button>
-          <button mat-button (click)="pasteClipboard(text)" id="paste">
-            Paste Id
-          </button>
           <p>Status: {{ status }}</p>
           <mat-spinner *ngIf="isLoading"></mat-spinner>
+          <div class="about">
+            <p>Made by: <a href="https://www.instagram.com/nav._.sharma/">Navjot Sharma</a></p>
+          </div>
         </div>
       </div>
     </div>
   </mat-drawer>
   <mat-drawer-content>
-    <a (click)="sidenav = !sidenav"
-      ><i class="fa fa-bars fa-3x" aria-hidden="true"></i
+    <a (click)="sidenav = true"
+      ><i class="fa fa-bars fa-3x nav-icon" aria-hidden="true"></i
     ></a>
+    <div class="greet">
+      <h1>Welcome to Chat!</h1>
+    </div>
     <div id="messages" class="container">
       <div *ngFor="let msg of msgs">
         <div class="row" *ngIf="msg.id === 0">

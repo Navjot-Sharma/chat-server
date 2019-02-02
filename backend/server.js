@@ -7,7 +7,6 @@ const app = express();
 const server = http.createServer(app);
 const io = require('socket.io').listen(server);
 
-// const defaultRoute = require('./routes/default');
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -19,17 +18,14 @@ app.use((req, res, next) => {
 });
 
 
-// app.use(express.static('views'));
 // app.use('/', express.static(path.join(__dirname, 'private-chat')));
 
 const clients = [];
 
 io.on('connection', (socket) => {
   clients.push(socket.id);
-  console.log('user connected', socket.id);
   socket.broadcast.to(socket.id).emit('connect');
   socket.on('disconnect', () => {
-    console.log('disconnected');
     const index = clients.findIndex( id => id === socket.id);
     clients.splice(index, 1);
   });
@@ -39,7 +35,6 @@ io.on('connection', (socket) => {
 });
 
 app.get('/:id', (req, res, next) => {
-  console.log(req.params.id);
   const index = clients.findIndex( id => id === req.params.id);
   if (index === -1) return res.status(200).json({status: 'Not connected'}); 
 

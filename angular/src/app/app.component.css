@@ -22,7 +22,7 @@ div {
 }
 #messages {
   display: block;
-  margin: 80px 100px;
+  margin: 200px 100px;
   padding: 0;
   font-size: 18px;
 }
@@ -91,4 +91,32 @@ button {
 }
 input {
   margin: 5px 0;
+  padding: 10px;
+}
+.about {
+  position: absolute;
+  bottom: 0;
+}
+.about a:hover {
+  cursor: pointer;
+  color: #838383;
+}
+.nav-icon {
+  position: fixed;
+  top: 0;
+}
+
+
+.mat-drawer:not(.mat-drawer-side) {
+  position: fixed;
+}
+
+.mat-drawer-backdrop {
+  position: fixed !important;
+}
+
+
+.greet {
+  text-align: center;
+  margin: 300px 200px;
 }
